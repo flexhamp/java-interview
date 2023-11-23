@@ -2,7 +2,7 @@
 
 # Стек и куча в Java
 
-[Оригинал](https://topjava.ru/blog/stack-and-heap-in-java)
+[Оригинал статьи](https://topjava.ru/blog/stack-and-heap-in-java)
 
 <!-- TOC -->
 
