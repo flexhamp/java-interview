@@ -1,4 +1,4 @@
-[назад](questions_of_interview.md)
+[< Назад](..%2F..%2FREADME.md)
 
 # Стек и куча в Java
 

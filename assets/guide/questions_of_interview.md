@@ -1,3 +1,5 @@
+[< Назад](..%2F..%2FREADME.md)
+
 # Вопросы по Java
 
 * [Стек и куча в Java](stack_and_heap_in_java.md)
