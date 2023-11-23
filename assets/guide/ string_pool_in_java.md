@@ -1,0 +1,1 @@
+# Руководство по String pool в Java
