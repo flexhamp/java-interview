@@ -1,4 +1,4 @@
-[< Назад](%20string_pool_in_java.md)
+[< Назад](string_pool_in_java.md)
 
 # Компактные строки в Java 9
 
