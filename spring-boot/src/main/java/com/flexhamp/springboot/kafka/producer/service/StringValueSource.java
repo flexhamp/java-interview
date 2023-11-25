@@ -2,6 +2,7 @@ package com.flexhamp.springboot.kafka.producer.service;
 
 import com.flexhamp.springboot.kafka.producer.model.StringValue;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

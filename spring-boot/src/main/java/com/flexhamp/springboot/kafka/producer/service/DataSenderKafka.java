@@ -3,6 +3,7 @@ package com.flexhamp.springboot.kafka.producer.service;
 import com.flexhamp.springboot.kafka.producer.model.StringValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.function.Consumer;
 

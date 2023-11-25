@@ -6,3 +6,5 @@ spring:
     producer:
       bootstrap-servers: "rtry.ru:9092"
       client-id: "demo-producer"
+    admin:
+      auto-create: false
