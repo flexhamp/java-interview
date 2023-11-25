@@ -1,8 +1,10 @@
-server:
-  port: 9090
-
+app:
+  kafka:
+    topic: "demo-topic"
 spring:
   kafka:
     producer:
       bootstrap-servers: "rtry.ru:9092"
       client-id: "demo-producer"
+    admin:
+      auto-create: false

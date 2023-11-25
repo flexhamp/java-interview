@@ -25,8 +25,7 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 public class AppConfig {
     public final String topicName;
 
-    public AppConfig(@Value("${application.kafka.topic:kafka-topic}") String topicName) {
-        System.setProperty("spring.config.additional-location", "classpath:/kafka/producer/");
+    public AppConfig(@Value("${app.kafka.topic:kafka-topic}") String topicName) {
         this.topicName = topicName;
     }
 
