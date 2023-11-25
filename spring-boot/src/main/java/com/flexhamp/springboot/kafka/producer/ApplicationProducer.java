@@ -9,5 +9,4 @@ public class ApplicationProducer {
 		System.setProperty("spring.config.additional-location", "classpath:/kafka/producer/");
 		SpringApplication.run(ApplicationProducer.class, args);
 	}
-
 }
