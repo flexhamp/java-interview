@@ -7,7 +7,7 @@ import com.flexhamp.springboot.kafka.consumer.service.StringValueConsumerLogger;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.common.serialization.StringSerializer;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
@@ -45,9 +45,9 @@ public class AppConfig {
     @Bean
     public ConsumerFactory<String, StringValue> producerFactory(KafkaProperties kafkaProperties, ObjectMapper mapper) {
         var props = kafkaProperties.buildConsumerProperties();
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        props.put(JsonSerializer.TYPE_MAPPINGS, "com.flexhamp.springboot.kafka.consumer.model.StringValue:com.flexhamp.springboot.kafka.consumer.model.StringValue");
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        props.put(JsonSerializer.TYPE_MAPPINGS, "com.flexhamp.springboot.kafka.producer.model.StringValue:com.flexhamp.springboot.kafka.consumer.model.StringValue");
         props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 3);
         props.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 3_000);
 

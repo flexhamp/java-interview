@@ -9,3 +9,5 @@ spring:
       bootstrap-servers: "rtry.ru:9092"
       client-id: "demo-consumer"
       auto-offset-reset: earliest
+    admin:
+      auto-create: false
