@@ -1,15 +1,18 @@
 package com.flexhamp.example2;
 
+import com.flexhamp.models.Animal;
+
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         List<Animal> animals = List.of(
-                new Animal("fish", false, true),
-                new Animal("kangaroo", true, false),
-                new Animal("rabbit", true, false),
-                new Animal("turtle", false, true)
+                new Animal("fish", false, true, 0),
+                new Animal("kangaroo", true, false, 0),
+                new Animal("rabbit", true, false, 0),
+                new Animal("turtle", false, true, 0)
         );
+
 
         print(animals, new CheckTraitImpl());
     }
