@@ -1,2 +1,11 @@
-server:
-  port: 9091
+app:
+  kafka:
+    topic: "demo-topic"
+
+spring:
+  kafka:
+    consumer:
+      group-id: "com.flexhamp.springboot.kafka.consumer"
+      bootstrap-servers: "rtry.ru:9092"
+      client-id: "demo-consumer"
+      auto-offset-reset: earliest

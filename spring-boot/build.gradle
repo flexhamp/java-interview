@@ -42,3 +42,15 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+springBoot {
+    mainClass.value("com.flexhamp.springboot.Application")
+}

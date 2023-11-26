@@ -6,6 +6,11 @@
 #
 #spring:
 #  kafka:
+#    consumer:
+#      group-id: "test-group"
+#      bootstrap-servers: "rtry.ru:9092"
+#      client-id: "demo-consumer"
+#      auto-offset-reset: earliest
 #    producer:
 #      bootstrap-servers: "rtry.ru:9092"
 #      client-id: "demo-producer"
