@@ -24,6 +24,7 @@ https://habr.com/ru/companies/oleg-bunin/articles/429908/
 https://habr.com/ru/companies/timeweb/articles/586804/
 https://habr.com/ru/articles/659699/
 https://www.youtube.com/watch?v=yYG12qaxWO4
+https://www.youtube.com/watch?v=ihFwjdG4Gh0
 
 
 ### Вопросы Java и Spring
@@ -34,3 +35,7 @@ https://habr.com/ru/articles/485678/
 
 ### Вопросы Docker
 https://habr.com/ru/companies/slurm/articles/528206/
+
+
+### Вопросы микросервисы
+https://www.youtube.com/watch?v=6HvSpqBc8fA&t=811s
