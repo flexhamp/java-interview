@@ -39,3 +39,8 @@ https://habr.com/ru/companies/slurm/articles/528206/
 
 ### Вопросы микросервисы
 https://www.youtube.com/watch?v=6HvSpqBc8fA&t=811s
+
+
+### Kafka
+https://www.youtube.com/watch?v=ZfbQfUAPVWY
+https://www.youtube.com/watch?v=9FikRH8rXas&t=55s
