@@ -17,4 +17,18 @@ https://ydmitry.ru/blog/rukovodstvo-po-markdown-dlya-uproshcheniya-veb-razrabotk
 https://habr.com/ru/articles/649363/
 
 
+
 ### Обучение kotlin
+https://play.kotlinlang.org/koans/Introduction/Hello,%20world!/Task.kt
+https://habr.com/ru/companies/oleg-bunin/articles/429908/
+https://habr.com/ru/companies/timeweb/articles/586804/
+https://habr.com/ru/articles/659699/
+
+### Вопросы Java и Spring
+https://habr.com/ru/articles/350682/
+https://habr.com/ru/articles/529210/
+https://habr.com/ru/articles/529214/
+https://habr.com/ru/articles/485678/
+
+### Вопросы Docker
+https://habr.com/ru/companies/slurm/articles/528206/
