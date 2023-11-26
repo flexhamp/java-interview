@@ -23,6 +23,8 @@ https://play.kotlinlang.org/koans/Introduction/Hello,%20world!/Task.kt
 https://habr.com/ru/companies/oleg-bunin/articles/429908/
 https://habr.com/ru/companies/timeweb/articles/586804/
 https://habr.com/ru/articles/659699/
+https://www.youtube.com/watch?v=yYG12qaxWO4
+
 
 ### Вопросы Java и Spring
 https://habr.com/ru/articles/350682/
