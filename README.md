@@ -11,4 +11,10 @@
 
 
 
+### Справка по Markdown
+https://support.fsight.ru/markup
+https://ydmitry.ru/blog/rukovodstvo-po-markdown-dlya-uproshcheniya-veb-razrabotki/
+https://habr.com/ru/articles/649363/
 
+
+### Обучение kotlin
