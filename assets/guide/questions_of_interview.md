@@ -404,7 +404,20 @@ https://javarush.com/groups/posts/2547-iz-8-v-13-polnihy-obzor-versiy-java-chast
 
 ## Виды прокси
 
+## Тестирования
+https://www.youtube.com/playlist?list=PLAma_mKffTOTtGQEbqurDRoPwDEKzzZQA
+
+## Инвертирование зависимостей
+https://javarush.com/quests/lectures/questservlets.level14.lecture08
+
+## Архитектура приложения
+https://javarush.com/quests/lectures?quest=QUEST_JRU_JAVA_PROFESSIONAL&level=14
+
+## Память в JVM (JMM)
+https://javarush.com/quests/lectures?quest=QUEST_JRU_JAVA_PROFESSIONAL&level=18
+
 ## Паттерны проектирования
+https://javarush.com/quests/lectures?quest=QUEST_JRU_JAVA_PROFESSIONAL&level=17
 
 ## Динамическая диспетчеризация
 
