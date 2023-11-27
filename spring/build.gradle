@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     implementation "org.springframework:spring-context:${springVersion}"
+    implementation "org.springframework:spring-webmvc:${springVersion}"
 }
 
 tasks.named('test') {
