@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.flexhamp'
+version = '0.0.1-SNAPSHOT'
+
+ext {
+    springVersion = '5.2.21.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework:spring-context:${springVersion}"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

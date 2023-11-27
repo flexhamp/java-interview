@@ -1,4 +1,4 @@
-package com.flexhamp.example1;
+package com.flexhamp.spring.example1;
 
 public interface MessageRenderer {
     void render();
