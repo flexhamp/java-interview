@@ -22,7 +22,8 @@ public class Exercise2Test {
         put("Chris", 26);
     }};
 
-    @Easy @Test
+    @Easy
+    @Test
     public void getDefaultValue() {
         Map<String, Integer> map = new HashMap<>(this.map);
 
@@ -34,21 +35,23 @@ public class Exercise2Test {
         assertThat(defaultVal, is(30));
     }
 
-    @Easy @Test
+    @Easy
+    @Test
     public void putIfNotExisting() {
         Map<String, Integer> map = new HashMap<>(this.map);
 
         /**
          * Try to put 2 entry with key as "Alice" value as 32, key as "Joe" and value as 32 using {@link Map#putIfAbsent}.
          */
-        // map.
-        // map.
+        map.putIfAbsent("Alice", 32);
+        map.putIfAbsent("Joe", 32);
 
         assertThat(map.get("Alice"), is(32));
         assertThat(map.get("Joe"), is(22));
     }
 
-    @Easy @Test
+    @Easy
+    @Test
     public void mergeValues() {
         Map<String, Integer> map = new HashMap<>(this.map);
 
@@ -64,17 +67,18 @@ public class Exercise2Test {
         assertThat(map.get("Joe"), is(54));
     }
 
-    @Easy @Test
+    @Easy
+    @Test
     public void ignoringAbsentKeys() {
         Map<String, Integer> map = new HashMap<>(this.map);
 
         /**
          * Try to increment the value for keys "Joe", "Steven" and "Alice" using {@link Map#computeIfPresent}.
          */
-        BiFunction<Object, Object, Integer> remappingFunction = null;
-        // map.
-        // map.
-        // map.
+        BiFunction<String, Integer, Integer> remappingFunction = (key, value) -> value + 1;
+        map.computeIfPresent("Joe", remappingFunction);
+        map.computeIfPresent("Steven", remappingFunction);
+        map.computeIfPresent("Alice", remappingFunction);
 
         assertThat(map.get("Joe"), is(23));
         assertThat(map.get("Steven"), is(28));
