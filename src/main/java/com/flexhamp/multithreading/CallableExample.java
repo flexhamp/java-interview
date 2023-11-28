@@ -1,12 +1,15 @@
 package com.flexhamp.multithreading;
 
+import com.flexhamp.util.Help;
+
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 public class CallableExample {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Callable<Integer> callable = new MyCallable();
-        FutureTask<Integer> futureTask = new FutureTask(callable);
+        FutureTask<Integer> futureTask = new FutureTask<>(callable);
         new Thread(futureTask).start();
 
 //        for (int i = 0; i < 100; i++) {
@@ -19,12 +22,21 @@ public class CallableExample {
         while (!futureTask.isDone() || i > 100) {
             i++;
             System.out.println(i);
-            if (i > 28)
+            if (i > 5) {
+                Help.callOrNext(futureTask::get);
+            }
+            if (i > 28) {
                 futureTask.cancel(true);
-            Thread.sleep(1000);
+            }
+            Help.callOrNext(() -> Thread.sleep(1000));
         }
 
-        final Integer result = futureTask.get();
+        Integer result = null;
+        try {
+            result = futureTask.get();
+        } catch (InterruptedException | ExecutionException ignored) {
+
+        }
         System.out.println(result);
     }
 
