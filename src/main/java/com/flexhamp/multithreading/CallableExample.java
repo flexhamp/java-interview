@@ -23,7 +23,7 @@ public class CallableExample {
             i++;
             System.out.println(i);
             if (i > 5) {
-                Help.callOrNext(futureTask::get);
+                Help.callOrNext(futureTask::get); // Тут заблокируется основной поток
             }
             if (i > 28) {
                 futureTask.cancel(true);
