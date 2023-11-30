@@ -1,4 +1,4 @@
-package com.flexhamp.stream;
+package flexhamp.stream;
 
 import java.util.List;
 import java.util.stream.Collectors;

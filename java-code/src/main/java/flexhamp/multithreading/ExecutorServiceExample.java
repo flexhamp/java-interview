@@ -1,6 +1,4 @@
-package com.flexhamp.multithreading;
-
-import com.flexhamp.util.Help;
+package flexhamp.multithreading;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;

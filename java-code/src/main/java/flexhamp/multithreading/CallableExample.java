@@ -1,4 +1,4 @@
-package com.flexhamp.multithreading;
+package flexhamp.multithreading;
 
 import com.flexhamp.util.Help;
 

@@ -1,4 +1,4 @@
-package com.flexhamp.util;
+package flexhamp.util;
 
 public interface ConsumerSafe<T> {
     void accept() throws Exception;

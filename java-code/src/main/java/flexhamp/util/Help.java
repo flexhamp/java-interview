@@ -1,4 +1,4 @@
-package com.flexhamp.util;
+package flexhamp.util;
 
 public final class Help {
     public static <T> void callOrNext(ConsumerSafe<T> c) {

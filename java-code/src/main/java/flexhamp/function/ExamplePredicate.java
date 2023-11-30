@@ -1,4 +1,4 @@
-package com.flexhamp.function;
+package flexhamp.function;
 
 import com.flexhamp.models.Animal;
 

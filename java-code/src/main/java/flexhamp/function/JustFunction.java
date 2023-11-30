@@ -1,4 +1,4 @@
-package com.flexhamp.function;
+package flexhamp.function;
 
 @FunctionalInterface
 public interface JustFunction<T> {

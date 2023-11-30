@@ -1,4 +1,4 @@
-package com.flexhamp;
+package flexhamp;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

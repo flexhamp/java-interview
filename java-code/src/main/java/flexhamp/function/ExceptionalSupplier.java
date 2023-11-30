@@ -1,6 +1,4 @@
-package com.flexhamp.function;
-
-import java.util.function.Supplier;
+package flexhamp.function;
 
 @FunctionalInterface
 public interface ExceptionalSupplier<T> {
