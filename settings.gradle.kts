@@ -11,3 +11,4 @@ rootProject.name = "questions"
 include("spring")
 include("spring-boot")
 include("java-code")
+include("jwt-server-spring")
