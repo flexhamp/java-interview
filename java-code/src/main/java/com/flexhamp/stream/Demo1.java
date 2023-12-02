@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static com.flexhamp.util.Constants.DEMO_TXT_FILE_NAME;
@@ -23,6 +24,13 @@ public class Demo1 {
         final String contents = new String(bytes, StandardCharsets.UTF_8);
 
         final String[] words = contents.split("\\PL+");
-        System.out.println(words);
+        System.out.println(Arrays.toString(words));
+
+
+        final long count = Arrays.stream(contents.split("\\PL+"))
+                .filter(w -> w.length() > 12)
+                .count();
+
+        System.out.println(count);
     }
 }
