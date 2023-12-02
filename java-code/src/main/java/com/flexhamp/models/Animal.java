@@ -1,4 +1,4 @@
-package flexhamp.models;
+package com.flexhamp.models;
 
 import java.util.Objects;
 

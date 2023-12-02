@@ -1,4 +1,4 @@
-package flexhamp.stream;
+package com.flexhamp.stream;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -43,6 +43,6 @@ public class Main {
         if (list == null)
             return null;
         return list.stream().map(Object::toString)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(","));
     }
 }
