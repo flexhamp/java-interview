@@ -61,12 +61,12 @@ public class JwtProvider {
         return validateToken(refreshToken, jwtRefreshSecret);
     }
 
-    private boolean validateToken(@NonNull String token, @NonNull Key secret) {
+    private boolean validateToken(@NonNull String token, @NonNull SecretKey secret) {
         try {
-            Jwts.parserBuilder()
-                    .setSigningKey(secret)
+            Jwts.parser()
+                    .verifyWith(secret)
                     .build()
-                    .parseClaimsJws(token);
+                    .parseSignedClaims(token);
             return true;
         } catch (ExpiredJwtException expEx) {
             log.error("Token expired", expEx);
