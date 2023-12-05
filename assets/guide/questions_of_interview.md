@@ -36,7 +36,7 @@
     * [Дженерики](#дженерики)
     * [Многопоточность](#многопоточность)
     * [Создание потоков](#создание-потоков)
-    * [deadlock](#deadlock)
+    * [Deadlock](#deadlock)
     * [Race condition](#race-condition)
     * [Неоднозначность бинов](#неоднозначность-бинов)
     * [Виды прокси](#виды-прокси)
@@ -435,7 +435,7 @@ public class Deadlock {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                
+
                 synchronized (lock2) {
 
                 }
