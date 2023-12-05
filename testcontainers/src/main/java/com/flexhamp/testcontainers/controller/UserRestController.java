@@ -27,7 +27,7 @@ public class UserRestController implements RowMapper<UserRestController.User> {
     record User(long id, String username) {
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<User> findAllUsers() {
         return this.jdbcOperations.query("select * from t_user", this);
     }

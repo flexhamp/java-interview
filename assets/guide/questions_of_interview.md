@@ -409,7 +409,55 @@ https://javarush.com/groups/posts/2547-iz-8-v-13-polnihy-obzor-versiy-java-chast
 
 ## Создание потоков
 
-## deadlock
+## Deadlock
+
+Deadlock или дедлок в Java или взаимная блокировка — это ошибка, которая происходит когда нити имеют циклическую
+зависимость от пары синхронизированных объектов. Представьте, что одна нить входит в монитор объекта x, а другая —
+объекта y. Если нить в объекте x пытается вызвать любой синхронизированный метод объекта y, а объект y в то же самое
+время пытается вызвать любой синхронизированный метод объекта x, то нити застрянут в процессе ожидания.
+
+![800.webp](..%2Fimages%2F800.webp)
+
+**Пример**
+
+```java
+public class Deadlock {
+    public static void main(String[] args) {
+        Object lock1 = new Object();
+        Object lock2 = new Object();
+
+        final Thread thread1 = new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + " start");
+            synchronized (lock1) {
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                
+                synchronized (lock2) {
+
+                }
+            }
+            System.out.println(Thread.currentThread().getName() + " end");
+        }, "thread1");
+
+        final Thread thread2 = new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + " start");
+            synchronized (lock2) {
+                synchronized (lock1) {
+
+                }
+            }
+            System.out.println(Thread.currentThread().getName() + " end");
+        }, "thread2");
+
+        thread1.start();
+        thread2.start();
+    }
+}
+```
 
 ## Race condition
 
