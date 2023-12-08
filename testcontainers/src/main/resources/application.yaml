@@ -15,6 +15,6 @@ spring:
         command: down
         timeout: 10s
       profiles:
-        active: pg_14
+        active: pg_15
       skip:
-        in-tests: true
+        in-tests: false

@@ -1,0 +1,20 @@
+spring:
+  sql:
+    init:
+      mode: always
+#  docker:
+#    compose:
+#      file: './testcontainers/compose.yaml'
+#      # Управление жизненным циклом контейнера
+#      # Если выбрать start_only (контейнер не останавливается)
+#      lifecycle-management: start_and_stop
+#      start:
+#        command: up
+#        log-level: debug
+#      stop:
+#        command: down
+#        timeout: 10s
+#      profiles:
+#        active: pg_15
+#      skip:
+#        in-tests: false
