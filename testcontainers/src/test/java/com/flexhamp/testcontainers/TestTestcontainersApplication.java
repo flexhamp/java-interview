@@ -11,29 +11,29 @@ import org.testcontainers.utility.DockerImageName;
 
 import javax.sql.DataSource;
 
-@Configuration()
-//@TestConfiguration(proxyBeanMethods = false)
-public class TestTestcontainersApplication {
-
-//    @Bean(initMethod = "start", destroyMethod = "stop")
-//    @ServiceConnection
-    @Bean
-    PostgreSQLContainer<?> postgresContainer() {
-        return new PostgreSQLContainer<>(DockerImageName.parse("postgres:15"));
-    }
-
-    @Bean
-    public DataSource dataSource(PostgreSQLContainer<?> postgresContainer) {
-        var hikariDataSource = new HikariDataSource();
-        hikariDataSource.setJdbcUrl(postgresContainer.getJdbcUrl());
-        hikariDataSource.setUsername(postgresContainer.getUsername());
-        hikariDataSource.setPassword(postgresContainer.getPassword());
-
-        return hikariDataSource;
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.from(TestcontainersApplication::main).with(TestTestcontainersApplication.class).run(args);
-    }
-
-}
+//@Configuration()
+////@TestConfiguration(proxyBeanMethods = false)
+//public class TestTestcontainersApplication {
+//
+////    @Bean(initMethod = "start", destroyMethod = "stop")
+////    @ServiceConnection
+//    @Bean
+//    PostgreSQLContainer<?> postgresContainer() {
+//        return new PostgreSQLContainer<>(DockerImageName.parse("postgres:15"));
+//    }
+//
+//    @Bean
+//    public DataSource dataSource(PostgreSQLContainer<?> postgresContainer) {
+//        var hikariDataSource = new HikariDataSource();
+//        hikariDataSource.setJdbcUrl(postgresContainer.getJdbcUrl());
+//        hikariDataSource.setUsername(postgresContainer.getUsername());
+//        hikariDataSource.setPassword(postgresContainer.getPassword());
+//
+//        return hikariDataSource;
+//    }
+//
+//    public static void main(String[] args) {
+//        SpringApplication.from(TestcontainersApplication::main).with(TestTestcontainersApplication.class).run(args);
+//    }
+//
+//}
