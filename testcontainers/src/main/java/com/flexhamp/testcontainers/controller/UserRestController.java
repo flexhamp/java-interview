@@ -21,7 +21,7 @@ public class UserRestController implements RowMapper<UserRestController.User> {
 
     @Override
     public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new User(rs.getLong("id"), rs.getString("username"));
+        return new User(rs.getLong("id"), rs.getString("c_username"));
     }
 
     record User(long id, String username) {
