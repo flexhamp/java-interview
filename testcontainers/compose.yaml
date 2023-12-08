@@ -7,3 +7,31 @@ services:
       POSTGRES_PASSWORD: secret
     ports:
       - '5432'
+    profiles:
+      - pg_15
+
+
+  db_pg_14:
+    image: 'postgres:14'
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: secret
+    ports:
+      - '5432'
+    profiles:
+      - pg_14
+
+# Если использовать собственный образ, над указать labels
+#  db_pg_14:
+#    image: 'my_postgres:14'
+#    labels:
+#      org.springframework.boot.service-connection: postgres
+#    environment:
+#      POSTGRES_DB: mydatabase
+#      POSTGRES_USER: myuser
+#      POSTGRES_PASSWORD: secret
+#    ports:
+#      - '5432'
+#    profiles:
+#      - pg_14

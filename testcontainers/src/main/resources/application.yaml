@@ -5,10 +5,16 @@ spring:
   docker:
     compose:
       file: './testcontainers/compose.yaml'
+      # Управление жизненным циклом контейнера
+      # Если выбрать start_only (контейнер не останавливается)
+      lifecycle-management: start_and_stop
       start:
         command: up
         log-level: debug
       stop:
         command: down
         timeout: 10s
-      lifecycle-management: start_and_stop
+      profiles:
+        active: pg_14
+      skip:
+        in-tests: true
