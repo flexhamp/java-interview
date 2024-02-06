@@ -11,7 +11,7 @@ public class Main {
 //        ISum iSum = Integer::sum;
 //        iSum.sum(1, 2);
 
-        LocalDateTime startDate = Instant.ofEpochMilli(1701088158549L)
+        LocalDateTime startDate = Instant.ofEpochMilli(1700146113038L)
                 .atZone(ZoneId.of("GMT+3"))
                 .toLocalDateTime();
 
