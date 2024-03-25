@@ -1,9 +1,10 @@
 package com.flexhamp.example3;
 
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.time.*;
-import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
