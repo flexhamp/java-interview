@@ -2,6 +2,7 @@
 <!-- TOC -->
 
 * [Руководство по String pool в Java](assets%2Fguide%2Fstring_pool_in_java.md)
+* [HashMap под микроскопом](assets%2Fguide%2Fhash_map.md)
 * [questions_of_eclipse.md](assets%2Fguide%2Fquestions_of_eclipse.md)
 * [questions_of_interview.md](assets%2Fguide%2Fquestions_of_interview.md)
 * [Стек и куча в Java](assets%2Fguide%2Fstack_and_heap_in_java.md)

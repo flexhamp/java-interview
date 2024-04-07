@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-//Используется для проверки того или иного условия
+// Используется для проверки того или иного условия
 public class ExamplePredicate {
     public static void main(String[] args) {
         List<Animal> animals = new ArrayList<>(List.of(
