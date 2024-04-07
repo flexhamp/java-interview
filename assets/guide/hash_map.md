@@ -109,7 +109,8 @@ public class Person {
 
 
 Выбор числа 31 в качестве множителя в методе `hashCode()` в примере класса `Person` основан на нескольких важных
-соображениях, описанных в книге "Effective Java" авторства Джошуа Блоха. **Почему же именно 31** является предпочтительным
+соображениях, описанных в книге "Effective Java" авторства Джошуа Блоха. **Почему же именно 31** является
+предпочтительным
 выбором для таких расчетов:
 
 1. **31 — простое число:** Использование простого числа в качестве множителя способствует созданию более равномерного
@@ -167,6 +168,42 @@ public Set<Map.Entry<K, V>> entrySet() {
 map.entrySet(); // Вызов
 ```
 
+### Capacity (ёмкость)
+
+`HashMap` имеет понятие `capacity` (ёмкость), которое является важным фактором, влияющим на его производительность и
+эффективность использования памяти. `Capacity` представляет собой количество "бакетов" или "слотов", доступных для
+хранения элементов в `HashMap`. Каждый бакет может хранить одну или несколько пар ключ-значение, образуя так называемую
+цепочку в случае коллизий.
+
+> ВАЖНО!!!
+>
+> Значение `capacity` должно быть равное степени двойки
+
+#### Инициализация и изменение ёмкости
+
+- При создании `HashMap`, вы можете указать начальную ёмкость (или она будет установлена в значение по умолчанию, если
+  вы этого не сделаете).
+- `HashMap` автоматически увеличивает свою ёмкость (т.е. количество бакетов), когда количество элементов в ней достигает
+  определённого порогового значения. Этот процесс называется "рехешированием".
+
+#### Влияние на производительность
+
+- **Производительность доступа**: В идеальных условиях (когда отсутствуют коллизии) время доступа к элементу (`get`
+  и `put` операции) в `HashMap` может быть близко к O(1), т.е. константное время. Однако, при наличии коллизий, это
+  время может увеличиваться, так как элементы в одном бакете хранятся в виде списка (или дерева, в зависимости от
+  количества элементов в бакете) и для доступа к элементу необходимо пройтись по этому списку.
+- **Память**: Увеличение ёмкости приводит к увеличению потребления памяти, поскольку создаётся больше бакетов для
+  хранения элементов. Это важно учитывать при работе с очень большими наборами данных.
+
+#### Коэффициент загрузки
+
+- Вместе с понятием ёмкости тесно связан коэффициент загрузки (`loadFactor`), который представляет собой меру того,
+  насколько плотно `HashMap` заполнена перед тем, как её ёмкость будет увеличена. Это значение, вещественное число
+  меньшее 1, по умолчанию равное 0.75 в Java, что означает, что рехеширование произойдёт, когда `HashMap` будет
+  заполнена на 75%.
+- Коэффициент загрузки представляет собой компромисс между временем доступа и потреблением памяти, где более высокий
+  коэффициент загрузки уменьшает потребление памяти за счёт некоторого увеличения времени доступа и наоборот.
+
 ### Доступные для модификации во время создания
 
 - **loadFactor** — Коэффициент загрузки. Значение по умолчанию 0.75 является хорошим компромиссом между временем доступа
@@ -181,7 +218,6 @@ static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
 - **threshold** — Предельное количество элементов, при достижении которого, размер хэш-таблицы увеличивается вдвое.
   Рассчитывается по формуле (**capacity** * **loadFactor**);
--
 
 ### Остальные свойства, которые нам неподвластны
 
@@ -191,6 +227,49 @@ static final float DEFAULT_LOAD_FACTOR = 0.75f;
   модифицируют структуру самого HashMap, такие как добавление, удаление элементов, очистка (**clear()**) или
   слияние (**merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction)**). Это поле
   используется для реализации fail-fast поведения итераторов.
+
+### Важные константы
+
+```java
+/**
+ * Начальная емкость - ДОЛЖНО быть степенью двойки.
+ */
+static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // 16 (2 в степени 4 или сдвиг в лево на 4)
+//00000000 00000000 00000000 00000001 << 4 = 00000000 00000000 00000000 00010000
+/**
+ * Максимальная емкость, используется, если неявно указано более высокое значение
+ * любым из конструкторов с аргументами.
+ * ДОЛЖНО быть степенью двойки
+ */
+static final int MAXIMUM_CAPACITY = 1 << 30; // 1_073_741_824 - (2 в степени 30 или сдвиг в лево на 30)
+//00000000 00000000 00000000 00000001 << 4 = 01000000 00000000 00000000 00000000
+
+
+/**
+ * The bin count threshold for using a tree rather than list for a
+ * bin.  Bins are converted to trees when adding an element to a
+ * bin with at least this many nodes. The value must be greater
+ * than 2 and should be at least 8 to mesh with assumptions in
+ * tree removal about conversion back to plain bins upon
+ * shrinkage.
+ */
+static final int TREEIFY_THRESHOLD = 8;
+
+/**
+ * The bin count threshold for untreeifying a (split) bin during a
+ * resize operation. Should be less than TREEIFY_THRESHOLD, and at
+ * most 6 to mesh with shrinkage detection under removal.
+ */
+static final int UNTREEIFY_THRESHOLD = 6;
+
+/**
+ * The smallest table capacity for which bins may be treeified.
+ * (Otherwise the table is resized if too many nodes in a bin.)
+ * Should be at least 4 * TREEIFY_THRESHOLD to avoid conflicts
+ * between resizing and treeification thresholds.
+ */
+static final int MIN_TREEIFY_CAPACITY = 64;
+```
 
 ## Создание объекта
 
@@ -237,51 +316,6 @@ class Main {
     }
 }
 ```
-
-Константы в мапе
-
-```java
-    /**
- * Начальная емкость - ДОЛЖНО быть степенью двойки.
- */
-static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // 16 (2 в степени 4 или сдвиг в лево на 4)
-//00000000 00000000 00000000 00000001 << 4 = 00000000 00000000 00000000 00010000
-/**
- * Максимальная емкость, используется, если неявно указано более высокое значение
- * любым из конструкторов с аргументами.
- * ДОЛЖНО быть степенью двойки
- */
-static final int MAXIMUM_CAPACITY = 1 << 30; // 1_073_741_824 - (2 в степени 30 или сдвиг в лево на 30)
-//00000000 00000000 00000000 00000001 << 4 = 01000000 00000000 00000000 00000000
-
-
-/**
- * The bin count threshold for using a tree rather than list for a
- * bin.  Bins are converted to trees when adding an element to a
- * bin with at least this many nodes. The value must be greater
- * than 2 and should be at least 8 to mesh with assumptions in
- * tree removal about conversion back to plain bins upon
- * shrinkage.
- */
-static final int TREEIFY_THRESHOLD = 8;
-
-/**
- * The bin count threshold for untreeifying a (split) bin during a
- * resize operation. Should be less than TREEIFY_THRESHOLD, and at
- * most 6 to mesh with shrinkage detection under removal.
- */
-static final int UNTREEIFY_THRESHOLD = 6;
-
-/**
- * The smallest table capacity for which bins may be treeified.
- * (Otherwise the table is resized if too many nodes in a bin.)
- * Should be at least 4 * TREEIFY_THRESHOLD to avoid conflicts
- * between resizing and treeification thresholds.
- */
-static final int MIN_TREEIFY_CAPACITY = 64;
-```
-
-Поля в мапе
 
 Конструкторы
 
