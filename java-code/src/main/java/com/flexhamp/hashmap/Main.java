@@ -8,7 +8,7 @@ import java.util.HashMap;public class Main {
     public static void main(String[] args) {
 //        System.out.println(VM.current().details());
 
-        final HashMap<String,String> map = new HashMap<>(64, 0.75F);
+        HashMap<String,String> map = new HashMap<>(64, 0.8F);
         System.out.println(ClassLayout.parseInstance(map).toPrintable());
 
         for (int i = 0; i < 25; i++) {

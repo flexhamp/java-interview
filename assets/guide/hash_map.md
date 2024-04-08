@@ -264,12 +264,15 @@ static final int tableSizeFor(int cap) {
  */
 static final float DEFAULT_LOAD_FACTOR = 0.75f;
 ```
+
 Задается через конструктор:
+
 ```java
-HashMap<String,String> map = new HashMap<>(64, 0.75F); // 64 - capacity,  0.75F - loadFactor
+HashMap<String, String> map = new HashMap<>(64, 0.75F); // 64 - capacity,  0.75F - loadFactor
 ```
 
-- **threshold** — Предельное количество элементов, при достижении которого, размер хэш-таблицы увеличивается вдвое (На следующую степень двойки).
+- **threshold** — Предельное количество элементов, при достижении которого, размер хэш-таблицы увеличивается вдвое (На
+  следующую степень двойки).
   Рассчитывается по формуле (**capacity** * **loadFactor**);
 
 ### Остальные свойства, которые нам неподвластны
@@ -326,11 +329,13 @@ static final int MIN_TREEIFY_CAPACITY = 64;
 
 ## Создание объекта
 
+### По умолчанию
+
 ```java
-Map<String, String> hashmap = new HashMap<String, String>();
+HashMap<String, String> map = new HashMap<>();
 ```
 
-При таком создании объекта, вызывается конструктор по умолчанию:
+Конструктор по умолчанию:
 
 ```java
 public HashMap() {
@@ -338,7 +343,7 @@ public HashMap() {
 }
 ```
 
-Инициализируется только loadFactor. Все остальные поля не проинициализированы (как пишут многие)
+Инициализируется только `loadFactor`. Все остальные поля не проинициализированы (как пишут многие)
 
 Новоявленный объект выглядит следующим образом:
 
@@ -351,44 +356,95 @@ public HashMap() {
 | 20  | 4  | int HashMap.size                        | 0                                         |
 | 24  | 4  | int HashMap.modCount                    | 0                                         |
 | 28  | 4  | int HashMap.threshold                   | 0                                         |
-| 32  | 4  | float HashMap.loadFactor                | 0.75                                      |
+| 32  | 4  | **float HashMap.loadFactor**            | **0.75**                                  |
 | 36  | 4  | java.util.HashMap.Node[] HashMap.table  | null                                      |
 | 40  | 4  | java.util.Set HashMap.entrySet          | null                                      |
 | 44  | 4  | (object alignment gap)                  |                                           |
 
 Instance size: 48 bytes
 
-Конструкторы
+### С указанием стартовой ёмкости
 
 ```java
-    /**
- * Constructs an empty {@code HashMap} with the specified initial
- * capacity and load factor.
- *
- * @param  initialCapacity the initial capacity
- * @param  loadFactor      the load factor
- * @throws IllegalArgumentException if the initial capacity is negative
- *         or the load factor is nonpositive
- */
-public HashMap(int initialCapacity, float loadFactor);
+HashMap<String, String> map = new HashMap<>(64);
+```
 
+Конструктор:
+```java
 public HashMap(int initialCapacity) {
     this(initialCapacity, DEFAULT_LOAD_FACTOR);
 }
 ```
 
+Инициализируется `loadFactor` и `threshold`. Все остальные поля не проинициализированы
+
+Новоявленный объект выглядит следующим образом:
+
+| OFF | SZ | TYPE DESCRIPTION                        | VALUE                                     |
+|-----|----|-----------------------------------------|-------------------------------------------|
+| 0   | 8  | (object header: mark)                   | 0x0000000000000001 (non-biasable; age: 0) |
+| 8   | 4  | (object header: class)                  | 0x000bb0d8                                |
+| 12  | 4  | java.util.Set AbstractMap.keySet        | null                                      |
+| 16  | 4  | java.util.Collection AbstractMap.values | null                                      |
+| 20  | 4  | int HashMap.size                        | 0                                         |
+| 24  | 4  | int HashMap.modCount                    | 0                                         |
+| 28  | 4  | **int HashMap.threshold**               | **64**                                    |
+| 32  | 4  | **float HashMap.loadFactor**            | **0.75**                                  |
+| 36  | 4  | java.util.HashMap.Node[] HashMap.table  | null                                      |
+| 40  | 4  | java.util.Set HashMap.entrySet          | null                                      |
+| 44  | 4  | (object alignment gap)                  |                                           |
+
+Instance size: 48 bytes
+
+
+### С указанием стартовой ёмкости и коэффициента загрузки
+
+```java
+HashMap<String,String> map = new HashMap<>(64, 0.8F);
+```
+
+Конструктор:
+```java
+public HashMap(int initialCapacity, float loadFactor) {
+    if (initialCapacity < 0)
+        throw new IllegalArgumentException("Illegal initial capacity: " +
+                initialCapacity);
+    if (initialCapacity > MAXIMUM_CAPACITY)
+        initialCapacity = MAXIMUM_CAPACITY;
+    if (loadFactor <= 0 || Float.isNaN(loadFactor))
+        throw new IllegalArgumentException("Illegal load factor: " +
+                loadFactor);
+    this.loadFactor = loadFactor;
+    this.threshold = tableSizeFor(initialCapacity);
+}
+```
+
+Инициализируется `loadFactor` и `threshold`. Все остальные поля не проинициализированы
+
+Новоявленный объект выглядит следующим образом:
+
+| OFF | SZ | TYPE DESCRIPTION                        | VALUE                                     |
+|-----|----|-----------------------------------------|-------------------------------------------|
+| 0   | 8  | (object header: mark)                   | 0x0000000000000001 (non-biasable; age: 0) |
+| 8   | 4  | (object header: class)                  | 0x000bb0d8                                |
+| 12  | 4  | java.util.Set AbstractMap.keySet        | null                                      |
+| 16  | 4  | java.util.Collection AbstractMap.values | null                                      |
+| 20  | 4  | int HashMap.size                        | 0                                         |
+| 24  | 4  | int HashMap.modCount                    | 0                                         |
+| 28  | 4  | **int HashMap.threshold**               | **64**                                    |
+| 32  | 4  | **float HashMap.loadFactor**            | **0.8**                                   |
+| 36  | 4  | java.util.HashMap.Node[] HashMap.table  | null                                      |
+| 40  | 4  | java.util.Set HashMap.entrySet          | null                                      |
+| 44  | 4  | (object alignment gap)                  |                                           |
+
+Instance size: 48 bytes
+
+
+
+
 Интересный метод
 
 ```java
-    /**
- * Returns a power of two size for the given target capacity.
- */
-static final int tableSizeFor(int cap) {
-    int n = -1 >>> Integer.numberOfLeadingZeros(cap - 1);
-    return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
-}
-
-
 static final int hash(Object key) {
     int h;
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
