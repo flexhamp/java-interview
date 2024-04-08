@@ -8,7 +8,7 @@
     * [Подготовка к пониманию](#подготовка-к-пониманию)
         * [Хэш-таблица](#хэш-таблица)
         * [Хэш-код](#хэш-код)
-        * [Как сделать хеш максимально разным:](#как-сделать-хеш-максимально-разным)
+        * [Как сделать хеш максимально разным](#как-сделать-хеш-максимально-разным)
     * [Определение HashMap](#определение-hashmap)
     * [Свойства HashMap:](#свойства-hashmap)
         * [Доступные для получения](#доступные-для-получения)
@@ -20,6 +20,12 @@
         * [Остальные свойства, которые нам неподвластны](#остальные-свойства-которые-нам-неподвластны)
         * [Важные константы](#важные-константы)
     * [Создание объекта](#создание-объекта)
+        * [По умолчанию](#по-умолчанию)
+        * [С указанием стартовой ёмкости](#с-указанием-стартовой-ёмкости)
+        * [С указанием стартовой ёмкости и коэффициента загрузки](#с-указанием-стартовой-ёмкости-и-коэффициента-загрузки)
+    * [Структура хранения данных](#структура-хранения-данных)
+        * [Node (бакет)](#node-бакет)
+    * [Добавление элементов](#добавление-элементов)
 
 <!-- TOC -->
 
@@ -60,12 +66,12 @@ Virtual Machine). Однако точное поведение может вар
 возвращение уникальных идентификаторов для разных объектов.
 
 ```java
-
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
 @IntrinsicCandidate
 public native int hashCode();
 ```
 
-### Как сделать хеш максимально разным:
+### Как сделать хеш максимально разным
 
 - **Переопределение `hashCode()`:** Для объектов, используемых в качестве ключей, важно переопределить
   метод `hashCode()`, чтобы он генерировал хеш-коды, равномерно распределенные по возможному диапазону значений.
@@ -164,17 +170,18 @@ HashMap — основан на хэш-таблицах, реализует ин
 
 - **size** — Количество элементов HashMap-а;
 
-```java 
-transient int size; // Поле
 ```
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224) 
 
-```java
+transient int size; // Поле
 map.size(); // Вызов
 ```
 
 - **entrySet** — Set<Map.Entry<K, V>>, поговорим чуть позже;
 
-```java 
+``` 
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 // Поле
 transient Set<Map.Entry<K, V>> entrySet;
 
@@ -183,9 +190,7 @@ public Set<Map.Entry<K, V>> entrySet() {
     Set<Map.Entry<K, V>> es;
     return (es = entrySet) == null ? (entrySet = new EntrySet()) : es;
 }
-```
 
-```java
 map.entrySet(); // Вызов
 ```
 
@@ -203,6 +208,8 @@ map.entrySet(); // Вызов
 **ВАЖНОЕ УСЛОВИЕ** обеспечивает метод `tableSizeFor`
 
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 /* Метод обеспечивает, чтобы емкость всегда была степенью числа 2.
  * В контексте HashSet или HashMap, tableSizeFor используется для расчета длины массива.
  */
@@ -259,6 +266,8 @@ static final int tableSizeFor(int cap) {
   и объемом хранимых данных;
 
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 /**
  * Коэффициент загрузки, используемый, если он не указан в конструкторе.
  */
@@ -268,6 +277,8 @@ static final float DEFAULT_LOAD_FACTOR = 0.75f;
 Задается через конструктор:
 
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 HashMap<String, String> map = new HashMap<>(64, 0.75F); // 64 - capacity,  0.75F - loadFactor
 ```
 
@@ -287,6 +298,8 @@ HashMap<String, String> map = new HashMap<>(64, 0.75F); // 64 - capacity,  0.75F
 ### Важные константы
 
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 /**
  * Начальная емкость - ДОЛЖНО быть степенью двойки.
  */
@@ -332,12 +345,16 @@ static final int MIN_TREEIFY_CAPACITY = 64;
 ### По умолчанию
 
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 HashMap<String, String> map = new HashMap<>();
 ```
 
 Конструктор по умолчанию:
 
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 public HashMap() {
     this.loadFactor = DEFAULT_LOAD_FACTOR;
 }
@@ -366,11 +383,16 @@ Instance size: 48 bytes
 ### С указанием стартовой ёмкости
 
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 HashMap<String, String> map = new HashMap<>(64);
 ```
 
 Конструктор:
+
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 public HashMap(int initialCapacity) {
     this(initialCapacity, DEFAULT_LOAD_FACTOR);
 }
@@ -396,15 +418,19 @@ public HashMap(int initialCapacity) {
 
 Instance size: 48 bytes
 
-
 ### С указанием стартовой ёмкости и коэффициента загрузки
 
 ```java
-HashMap<String,String> map = new HashMap<>(64, 0.8F);
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
+HashMap<String, String> map = new HashMap<>(64, 0.8F);
 ```
 
 Конструктор:
+
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 public HashMap(int initialCapacity, float loadFactor) {
     if (initialCapacity < 0)
         throw new IllegalArgumentException("Illegal initial capacity: " +
@@ -439,12 +465,11 @@ public HashMap(int initialCapacity, float loadFactor) {
 
 Instance size: 48 bytes
 
-
-
-
 Интересный метод
 
 ```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
 static final int hash(Object key) {
     int h;
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
@@ -453,3 +478,50 @@ static final int hash(Object key) {
 ```
 
 https://chat.openai.com/share/873aaf10-45e7-4745-80fc-9ba9a8275530
+
+## Структура хранения данных
+
+Как было сказано выше, данные хранятся в массиве `table`
+
+```java
+// Это схематичное представление создания хранилища бакетов
+Node<K, V>[] table = (Node<K, V>[]) new Node[capacity];
+```
+
+### Node (бакет)
+
+```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
+// Базовый узел хеш-бина, используемый для большинства записей.
+static class Node<K, V> implements Map.Entry<K, V> {
+    final int hash;     // Вычисленный хэш (получен от хэш-функции)
+    final K key;        // Ключ
+    V value;            // Значение
+    Node<K, V> next;    // Ссылка на следующий элемент
+    // ...
+}
+```
+
+```java
+// Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
+
+static final class TreeNode<K, V> extends LinkedHashMap.Entry<K, V> {
+    TreeNode<K, V> parent;  // red-black tree links
+    TreeNode<K, V> left;
+    TreeNode<K, V> right;
+    TreeNode<K, V> prev;    // needed to unlink next upon deletion
+    boolean red;
+    // ...    
+}
+```
+
+## Добавление элементов
+
+```
+map.put("0", "zero");
+```
+
+При добавлении элемента, последовательность шагов следующая:
+
+1. 
