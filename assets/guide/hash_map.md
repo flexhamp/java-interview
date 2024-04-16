@@ -208,6 +208,7 @@ map.entrySet(); // Вызов
 **ВАЖНОЕ УСЛОВИЕ** обеспечивает метод `tableSizeFor`
 
 ```java
+// Java version "11.0.8" 2020-07-14 LTS SE Runtime Environment 18.9 (build 11.0.8+10-LTS)
 // Java version "17.0.7" 2023-04-18 LTS SE Runtime Environment (build 17.0.7+8-LTS-224)
 
 /* Метод обеспечивает, чтобы емкость всегда была степенью числа 2.
@@ -231,6 +232,28 @@ static final int tableSizeFor(int cap) {
     /*
      * Это составное условное выражение. Если n меньше 0, функция возвращает 1. Если n больше или равно MAXIMUM_CAPACITY (константе, определенной где-то в коде), то возвращается значение MAXIMUM_CAPACITY. В противном случае, к n прибавляется 1 и возвращается полученное число.
      */
+    return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+}
+```
+
+```java
+// Java version "11.0.8" 2020-07-14 LTS SE Runtime Environment 18.9 (build 11.0.8+10-LTS)
+static final int tableSizeFor(int cap) {
+    int n = -1 >>> Integer.numberOfLeadingZeros(cap - 1);
+    return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+}
+```
+
+```java
+// Java version "1.8.0_221" SE Runtime Environment (build 1.8.0_221-b11)
+
+static final int tableSizeFor(int cap) {
+    int n = cap - 1;
+    n |= n >>> 1;
+    n |= n >>> 2;
+    n |= n >>> 4;
+    n |= n >>> 8;
+    n |= n >>> 16;
     return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
 }
 ```
@@ -315,27 +338,23 @@ static final int MAXIMUM_CAPACITY = 1 << 30; // 1_073_741_824 - (2 в степе
 
 
 /**
- * The bin count threshold for using a tree rather than list for a
- * bin.  Bins are converted to trees when adding an element to a
- * bin with at least this many nodes. The value must be greater
- * than 2 and should be at least 8 to mesh with assumptions in
- * tree removal about conversion back to plain bins upon
- * shrinkage.
+ * Определяет пороговое значение для преобразования связного списка в
+ * красно-черное дерево в конкретном бакете хеш-таблицы.
  */
 static final int TREEIFY_THRESHOLD = 8;
 
 /**
- * The bin count threshold for untreeifying a (split) bin during a
- * resize operation. Should be less than TREEIFY_THRESHOLD, and at
- * most 6 to mesh with shrinkage detection under removal.
+ * Определяет, когда сбалансированное дерево (красно-черное) должно быть преобразовано обратно в
+ * связный список в определённом бакете хеш-таблицы.
  */
 static final int UNTREEIFY_THRESHOLD = 6;
 
 /**
- * The smallest table capacity for which bins may be treeified.
- * (Otherwise the table is resized if too many nodes in a bin.)
- * Should be at least 4 * TREEIFY_THRESHOLD to avoid conflicts
- * between resizing and treeification thresholds.
+ * Определяет минимальный размер массива хеш-таблицы, необходимый для преобразования связных списков в деревья.
+ * Этот параметр используется для предотвращения преобразования связных списков в деревья, 
+ * если общая емкость хеш-таблицы слишком мала. Преобразование связных списков в деревья 
+ * при малом размере хеш-таблицы может быть неэффективным и привести к избыточным накладным расходам,
+ * особенно когда хеш-таблица могла бы просто быть расширена для улучшения распределения элементов.
  */
 static final int MIN_TREEIFY_CAPACITY = 64;
 ```
