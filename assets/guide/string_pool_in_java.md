@@ -92,14 +92,14 @@ public class StringExampleOne {
 
 Результат выполнения программы:
 
-![carbon_27.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_27.png)
+![carbon_27.png](../images/string-pool-in-java/carbon_27.png)
 
 Напомним, что знак «==» сравнивает ссылки на объекты, а не их значения. Результат выполнения программы подтверждает, что
 строки str1 и str2 ссылаются на одно и то же место в памяти в пуле строк.
 
 Иллюстративно это выглядит так:
 
-![Frame_197.jpg](..%2Fimages%2Fstring-pool-in-java%2FFrame_197.jpg)
+![Frame_197.jpg](../images/string-pool-in-java/Frame_197.jpg)
 
 В следующем примере попробуем «склеить» строковые литералы и посмотрим, влияет ли конкатенация на результат:
 
@@ -117,7 +117,7 @@ public class StringExampleTwo {
 
 Результат выполнения программы:
 
-![carbon_28.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_28.png)
+![carbon_28.png](../images/string-pool-in-java/carbon_28.png)
 
 В строке «Top» + «Java» создаются два строковых объекта со значениями «Top» и «Java», которые помещаются в пул.
 «Склеенные» строки образуют еще одну строку со значением «TopJava», ссылка на которую берется из пула строк (а не
@@ -127,15 +127,15 @@ public class StringExampleTwo {
 
 Иллюстративно итоговый результат выглядит так:
 
-![Frame_215.jpg](..%2Fimages%2Fstring-pool-in-java%2FFrame_215.jpg)
+![Frame_215.jpg](../images/string-pool-in-java/Frame_215.jpg)
 
 А теперь давайте рассмотрим еще один пример, который выдаст неожиданный результат:
 
-![carbon_29.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_29.png)
+![carbon_29.png](../images/string-pool-in-java/carbon_29.png)
 
 Схематично это выглядит примерно так:
 
-![Frame_201_1.jpg](..%2Fimages%2Fstring-pool-in-java%2FFrame_201_1.jpg)
+![Frame_201_1.jpg](../images/string-pool-in-java/Frame_201_1.jpg)
 
 Причиной получения false является то, что интернирование происходит не во время работы приложения (runtime), а во время
 компиляции. А т.к. значение строки str3 вычисляется во время выполнения приложения, то на этапе компиляции оно не
@@ -169,11 +169,11 @@ public class StringExampleFour {
 
 Результат выполнения программы:
 
-![carbon_30.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_30.png)
+![carbon_30.png](../images/string-pool-in-java/carbon_30.png)
 
 Иллюстративно это выглядит так:
 
-![Frame_214.png](..%2Fimages%2Fstring-pool-in-java%2FFrame_214.png)
+![Frame_214.png](../images/string-pool-in-java/Frame_214.png)
 
 Таким образом, создав четыре одинаковых строки, в памяти зафиксируются только три объекта. Согласитесь, что это
 нерационально.
@@ -201,11 +201,11 @@ public class StringExampleFive {
 
 Результат выполнения программы:
 
-![carbon_31.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_31.png)
+![carbon_31.png](../images/string-pool-in-java/carbon_31.png)
 
 Иллюстративно это выглядит так:
 
-![Frame_202.jpg](..%2Fimages%2Fstring-pool-in-java%2FFrame_202.jpg)
+![Frame_202.jpg](../images/string-pool-in-java/Frame_202.jpg)
 
 Рассмотрим еще один интересный пример:
 
@@ -224,11 +224,11 @@ public class StringExampleSix {
 
 Результат выполнения программы:
 
-![carbon_32.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_32.png)
+![carbon_32.png](../images/string-pool-in-java/carbon_32.png)
 
 Соответственно, иллюстративно это выглядит так:
 
-![Frame_203.jpg](..%2Fimages%2Fstring-pool-in-java%2FFrame_203.jpg)
+![Frame_203.jpg](../images/string-pool-in-java/Frame_203.jpg)
 
 Поясним результат. Строки str1 и str2 добавлены в пул строк на этапе компиляции. Во время выполнения программы
 происходит конкатенация строки «interned» со значением строки str2, с последующим интернированием получившейся строки в
@@ -299,7 +299,7 @@ public class Main {
 
 Результат выполнения программы:
 
-![carbon_34.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_34.png)
+![carbon_34.png](../images/string-pool-in-java/carbon_34.png)
 
 Таким образом, на основе ConcurrentHashMap был создан пул строк, в который мы пытались добавить 10 повторяющихся строк.
 В итоге были добавлены только 4 уникальных строки.
@@ -466,7 +466,7 @@ public class DeduplicationDemo {
 
 Результат выполнения программы:
 
-![carbon_37.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_37.png)
+![carbon_37.png](../images/string-pool-in-java/carbon_37.png)
 
 Как видим, дедупликация не сработала. Для ее активации необходимо в параметрах виртуальной машины указать -XX:
 +UseStringDeduplication, а также активировать сборщик мусора G1 (если он не используется по умолчанию), указав также
@@ -474,7 +474,7 @@ public class DeduplicationDemo {
 
 В этом случае имеем правильный результат выполнения программы:
 
-![carbon_38.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_38.png)
+![carbon_38.png](../images/string-pool-in-java/carbon_38.png)
 
 Результат говорит о следующем: создав два объекта с помощью new, мы получили два разных объекта с разными
 идентификационными хешами для массивов байт. Запустив сборщик мусора и подождав некоторое время (дедупликация не
@@ -482,7 +482,7 @@ public class DeduplicationDemo {
 
 Иллюстративно это выглядит так:
 
-![pasted_image_0_3.png](..%2Fimages%2Fstring-pool-in-java%2Fpasted_image_0_3.png)
+![pasted_image_0_3.png](../images/string-pool-in-java/pasted_image_0_3.png)
 
 Видоизменим немного код, добавив в массив строковый литерал:
 
@@ -514,11 +514,11 @@ public class DeduplicationDemo {
 
 Результат выполнения программы:
 
-![carbon_42.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_42.png)
+![carbon_42.png](../images/string-pool-in-java/carbon_42.png)
 
 Иллюстративно это выглядит так:
 
-![pasted_image_0_4.png](..%2Fimages%2Fstring-pool-in-java%2Fpasted_image_0_4.png)
+![pasted_image_0_4.png](../images/string-pool-in-java/pasted_image_0_4.png)
 
 Создав строковый литерал str3, мы, тем самым, строку «TopJava» добавили в пул строк. Во время дедупликации виртуальная
 машина увидев, что в пуле строк уже содержится такой массив байт, изменила адрес массива byte[] для созданных через
