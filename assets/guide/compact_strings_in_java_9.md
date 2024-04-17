@@ -154,7 +154,7 @@ public class CompactStringTest {
 
 Когда мы запускаем этот код (Compact Strings включены по умолчанию), мы получаем вывод:
 
-![carbon_7.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_7.png)
+![carbon_7.png](../images/string-pool-in-java/carbon_7.png)
 
 Точно так же, если мы запустим, отключив Compact Strings с помощью опции:
 
@@ -164,7 +164,7 @@ public class CompactStringTest {
 
 Получим:
 
-![carbon_8.png](..%2Fimages%2Fstring-pool-in-java%2Fcarbon_8.png)
+![carbon_8.png](../images/string-pool-in-java/carbon_8.png)
 
 Понятно, что это тест поверхностен, и он не может быть очень репрезентативным — это всего лишь пример того, как новая
 опция может улучшить производительность в этом конкретном сценарии.

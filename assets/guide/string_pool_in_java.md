@@ -1,4 +1,4 @@
-[< Назад](..%2F..%2FREADME.md)
+[< Назад](../../README.md)
 
 # Руководство по String pool в Java
 
